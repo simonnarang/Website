@@ -8,6 +8,14 @@ import Grid from "@material-ui/core/Grid";
 import Unity, { UnityContext } from "react-unity-webgl";
 //import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Dialog from "@material-ui/core/Dialog";
+import DialogActions from "@material-ui/core/DialogActions";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import GoogleMapReact from 'google-map-react';
+import { Button } from "@material-ui/core";
+import { MobileView } from "react-device-detect";
 
 const unityContext = new UnityContext({
   loaderUrl: "./Build/UnityBuild.loader.js",
@@ -221,6 +229,19 @@ class Simulator extends Component {
             </div>
             <br></br>
 
+            <div style={{width: '950px', height: '400px'}}>
+              <GoogleMapReact
+                defaultCenter={{
+                  lat: 35.481918,
+                  lng: -97.508469,
+                }}
+                defaultZoom={10}
+              >
+              </GoogleMapReact>
+            </div>
+
+            <br></br>
+
             <div className={classes.bubble} align="center">
               <Typography className={classes.bold}>About </Typography>
               
@@ -282,6 +303,22 @@ class Simulator extends Component {
               running. This is normal and happens because there is a lot of data
               that needs to be processed and sent back to your browser.
               <br />
+              <br />
+              <Typography variant="h4" className={classes.bold}>
+                Educational Resources
+              </Typography>
+              <ul>
+                <li>
+                  <a target="_blank" href="https://drive.google.com/file/d/1kNyUd4YSmahDOib99TjfQsh_qoTiFRZ2/view?usp=sharing" download>
+                    High School Delineo Lab
+                  </a>
+                </li>
+                <li>
+                  <a target="_blank" href="https://drive.google.com/file/d/1JojKSrQhDsOTeSe7g2_QkN7XersQ0sh9/view?usp=sharing" >
+                    Middle School Delineo Lab
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </Grid>
@@ -291,3 +328,4 @@ class Simulator extends Component {
 }
 
 export default withStyles(styles)(Simulator);
+
